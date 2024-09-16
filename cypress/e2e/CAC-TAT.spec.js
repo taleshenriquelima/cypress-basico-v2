@@ -4,7 +4,7 @@
 // If you're unfamiliar with how Cypress works,
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
 
   //Teste 00 Iniciar a Aplicação
@@ -82,11 +82,11 @@ describe('Central de Atendimento ao Cliente TAT', function() {
        .should('have.value','feedback')
     })
     //Select File
-    it('seleciona um arquivo da pasta fixtures', function() {
+    it.only('seleciona um arquivo da pasta fixtures', function() {
       cy
         .get('input[type="file"]')
         .should('not.have.value')
-        .selectFile('C:/Users/077077631/Desktop/teorico.pdf')
+        .selectFile('/cypress/fixtures/example.json')
         //.should('#file-upload"]').to.equal('example.json')
         .get('botton,[type="submit"]').click()
         .get('.error').should('be.visible')

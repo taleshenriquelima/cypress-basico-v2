@@ -6,6 +6,6 @@ module.exports = defineConfig({
   projectId: '5a98y5',
   e2e: {
     setupNodeEvents(on, config) {},
-    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
   },
 })
