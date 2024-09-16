@@ -5,7 +5,11 @@
   "main": "src/index.html",
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cypress run"
+    "test": "cypress run",
+    "allure-chro": "cypress run --browser chrome --env allure=true",
+    "allure-fire": "npx cypress run --browser firefox --env allure=true",
+    "allure:repo": "allure generate allure-results --clean -o allure-report",
+    "allure:clea": "rm -r allure-results/ allure-report cypress/screenshots || true"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,7 @@
   "license": "MIT",
   "homepage": "https://github.com/wlsf82/cypress-basico-v2#readme",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
     "cypress": "^13.14.2",
     "mochawesome": "^7.1.3"
   }
