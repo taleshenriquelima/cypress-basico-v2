@@ -50,13 +50,13 @@ describe('Central de Atendimento ao Cliente TAT', function() {
            .should('have.value',"")      
    })  
   
-   //Teste 03 exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário
+   //Teste 04 exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário
    it('exibe mensagem de erro quando o telefone se torna obrigatório', function() {
       cy
           .get('#firstName').type('Tales')
           .get('#lastName').type('Henrique')
           .get('#email').type('taleshenriquelima@gmail.con')
-          .get('#phone-checkbox').click()
+          .get('#phone-checkbox').check()
           .get('#open-text-area').type('teste 03')
           .get('botton,[type="submit"]').click()
           .get('.error').should('be.visible')      
@@ -65,8 +65,46 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    //envia o formuário com sucesso usando um comando customizado
    it('envia o formuário com sucesso usando um comando customizado', function() {
     cy.fillMandatoryFieldsAndSubmit()
-    .get('.success').should('be.visible')  
+      .get('.success').should('be.visible')  
    }) 
 
+   //Selecionando opções em campos de seleção suspensa
+    it('seleciona um produto (blog) por seu texto', function() {
+      cy
+        .get('select').select('blog').should('have.value', 'blog')
+        .get('select').select('cursos').should('have.value', 'cursos')       
+    }) 
 
+    //marca o tipo de atendimento "Feedback"
+    it('Marca o tipo de atendimento "Feedback', function() {
+      cy
+       .get('[type="radio"][value="feedback"]').check()
+       .should('have.value','feedback')
+    })
+    //Select File
+    it('seleciona um arquivo da pasta fixtures', function() {
+      cy
+        .get('input[type="file"]')
+        .should('not.have.value')
+        .selectFile('C:/Users/077077631/Desktop/teorico.pdf')
+        //.should('#file-upload"]').to.equal('example.json')
+        .get('botton,[type="submit"]').click()
+        .get('.error').should('be.visible')
+  
+    }) 
+
+    // verifica que a política de privacidade abre em outra aba sem a necessidade de um clique
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', function(){
+      cy
+        .get('#privacy')
+        .get('#privacy a').should('have.attr', 'target', '_blank')
+        .get('#privacy a').invoke('removeAttr', 'target')
+        .click()
+        .title().should('be.equal','Central de Atendimento ao Cliente TAT - Política de privacidade')
+        //.screenshot()
+        //.get('#title')
+      cy.contains('CAC TAT - Política de privacidade').should('be.visible')
+        
+
+    }) 
 })
