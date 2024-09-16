@@ -27,6 +27,8 @@
   "homepage": "https://github.com/wlsf82/cypress-basico-v2#readme",
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.40.2",
+    "allure-commandline": "^2.30.0",
+    "allure-cypress": "^3.0.0",
     "cypress": "^13.14.2",
     "mochawesome": "^7.1.3"
   }
