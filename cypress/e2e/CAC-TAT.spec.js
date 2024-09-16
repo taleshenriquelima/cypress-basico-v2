@@ -40,7 +40,11 @@ describe('Central de Atendimento ao Cliente TAT', function() {
             .get('#phone').type('19982754555')
             .get('#open-text-area').type('teste 03')
             .get('botton,[type="submit"]').click()
-            .get('.error').should('be.visible')      
+            .get('.error').should('be.visible')
+            .get('body')
+            .screenshot({
+              capture: 'runner',
+            }) 
     })  
 
     //Teste 03 validar que, se um valor não-numérico for digitado, seu valor continuará vazio.
