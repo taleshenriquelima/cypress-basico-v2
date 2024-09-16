@@ -1,6 +1,6 @@
   //Teste 00 Iniciar a Aplicação
 describe('Central de Atendimento ao Cliente TAT', function() {
-    it('teste independete da pagina de privacidade',function(){
+      beforeEach(function() {
         cy.visit('https://cac-tat.s3.eu-central-1.amazonaws.com/privacy.html')
     })
 
