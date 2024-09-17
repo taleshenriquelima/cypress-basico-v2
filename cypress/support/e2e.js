@@ -19,5 +19,6 @@ import '@shelex/cypress-allure-plugin'; //SOMENTE ESSA LINHA AQUI NESSA MESMA PO
 
 
 
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
